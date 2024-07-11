@@ -48,6 +48,14 @@ public class ToolController {
 
     }
 
+    @DeleteMapping(path ="{id}")
+
+    public ResponseEntity <ToolResponse> deleteTool(@PathVariable("id") String id){
+        ToolModel tools = toolservice.deleteFoodById(id);
+        ToolResponse response = new ToolResponse("Tool was deleted successfully", tools);
+        return ResponseEntity.ok(response);
+    }
+
 
 
 
