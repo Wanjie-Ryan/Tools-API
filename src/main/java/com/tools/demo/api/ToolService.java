@@ -62,5 +62,19 @@ public class ToolService {
         return tool.get();
     }
 
+    // DELETE BY ID
+
+    public ToolModel deleteFoodById(String id){
+        Optional <ToolModel> food = repository.findById(UUID.fromString(id));
+
+        if(!food.isPresent()){
+            throw new IllegalStateException("Food of id " + id + " does not exist");
+        }
+
+        ToolModel foodToDelete = food.get();
+        repository.deleteById(UUID.fromString(id));
+        return foodToDelete;
+    }
+
 
 }
