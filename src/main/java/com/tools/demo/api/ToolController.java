@@ -40,6 +40,14 @@ public class ToolController {
 
     @GetMapping(path="{id}")
 
+    public ResponseEntity <ToolResponse> getToolById(@PathVariable ("id") String id){
+
+        ToolModel tools = toolservice.getToolById(id);
+        ToolResponse response = new ToolResponse("Single Tools is ", tools);
+         return ResponseEntity.ok(response);
+
+    }
+
 
 
 
